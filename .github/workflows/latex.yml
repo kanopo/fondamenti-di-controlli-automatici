@@ -10,4 +10,4 @@ jobs:
       - name: Compile LaTeX document
         uses: Sakul6499/GitHub-Action-LaTeX@v0.0.1
         with:
-          latex_main_file: modelli_e_algoritmi_per_il_supporto_alle_decisioni.tex
+          latex_main_file: fondamenti_di_controlli_automatici.tex
