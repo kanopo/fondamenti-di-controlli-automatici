@@ -25,22 +25,11 @@
 \title{Fondamenti di controlli automatici \\[1ex] \large Un goliardico riassunto}
 \author{Ollari Dmitri}
 
-% Aggiunta dei teoremi alla lista dei contenuti
-\newcommand{\listtheoremsname}{Lista delle definizioni}
-\newlistof{theoremlist}{thm}{\listtheoremsname}
-\newcommand{\theoremlist}[1]{%
-  \refstepcounter{theoremlist}%
-  \addcontentsline{thm}{theoremlist}{\protect\numberline{\thetheoremlist}#1}%
-}
-
 \begin{document}
 \newtheorem*{theorem}{Teorema}
     \maketitle
     
     \tableofcontents
-    % \listoffigures
-    % Creazione della lista dei teoremi
-    \listoftheoremlist
 
     \include{1}
 \end{document}
