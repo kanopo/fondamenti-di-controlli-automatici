@@ -1,0 +1,160 @@
+\documentclass{article}
+
+% Packages
+\usepackage{amsmath} % For mathematical symbols and equations
+\usepackage{amsthm} % For theorem environments
+\usepackage{amsfonts} % For mathematical fonts
+\usepackage{graphicx} % For including graphics
+
+% Theorem environments
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{definition}[theorem]{Definition}
+
+% Title and author
+\title{Fondamenti di controlli automatici}
+\author{Dmitri Ollari}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Analisi complessa}
+Quando si ha a che fare con equazioni differenziali lineari, solitamente si preferisce trasformare il calcolo da dominio del tempo $t$ a dominio complesso $s$,
+svolgere il calcolo come se fosse una problema polinomiale e ritornare nel dominio del tempo $t$ con il problema risolto.
+
+\subsection{Poli}
+Avendo una funzione d'esempio:
+\begin{align}
+  \frac{s(s+6)^3}{(s-2)(s+3)^2(s+5)^4}
+\end{align}
+
+I poli in questo caso sono:
+\begin{itemize}
+  \item $s = 2$ di ordine 1
+  \item $s = -3$ di ordine 2
+  \item $s = -5$ di ordine 4
+\end{itemize}
+
+
+\subsection{Zeri}
+Avendo una funzione d'esempio:
+\begin{align}
+  \frac{s(s+6)^3}{(s-2)(s+3)^2(s+5)^4}
+\end{align}
+
+Gli zeri in questo caso sono:
+\begin{itemize}
+  \item $s = 0$ di ordine 1
+  \item $s = -6$ di ordine 3
+\end{itemize}
+
+\section{Trasformata di Laplace}
+La trasformata di laplace \`e comoda perch\`e permette di trasformare un problema differenziale in un problema algebrico e nel farlo mantiene la proprietà di linerià.
+Il che permette di:
+\begin{align}
+  \mathcal{L}[c_1 f_1(t) + c_2 f_2(t)] = c_1 \mathcal{L}[f_1(t)] + c_2 \mathcal{L}[f_2(t)]
+\end{align}
+
+La trasformata di Laplace rispetta anche la proprietà di Iniettività, ovvero:
+\begin{align}
+  \mathcal{L}[f(t)] = \mathcal{L}[g(t)] \implies f(t) = g(t)
+\end{align}
+
+\renewcommand{\arraystretch}{1.5} % Aumenta la spaziatura verticale
+\subsection{Trasformate di laplace interessanti}
+\begin{center}
+  
+\begin{tabular}{| c | c |}
+  \hline
+  Segnale & Trasformata di Laplace \\
+  \hline
+  Gradino unitario & $\mathcal{L}[1(t)] = \frac{1}{s}$ \\
+  \hline
+  Segnale esponenziale & $\mathcal{L}[e^{at}] = \frac{1}{s-a}$ \\
+  \hline
+  & $\mathcal{L}[t^n] = \frac{n!}{s^{n+1}}$ \\
+  \hline
+  Derivata segnale impulsivo & $\mathcal{L}[\delta^{(n)}(t)] = s^n$ \\
+  \hline
+  Segnale impulsivo & $\mathcal{L}[\delta(t)] = 1$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\section{Funzione di trasferimento}
+\subsection{Guadanagno statico}
+\begin{align}
+  Y(s) = G(0) U(s)
+\end{align}
+
+\subsection{polinomio caratteristico}
+Dato:
+\begin{align}
+  \sum_{i=0}^n a_i D^i y = \sum_{i=0}^m b_i D^i u
+\end{align}
+
+Il polinomio caratteristico è:
+\begin{align}
+  a(s) = \sum_{i=0}^n a_i S^i
+\end{align}
+
+
+\subsection{Poli e Zeri}
+I poli sono le radici di $a(s)$, gli zeri sono le radici di $b(s)$.
+
+
+\subsection{Modi}
+Se $p$ \`e un polo reale con molteplicit\`a $h$, allora:
+\begin{align}
+  t^{h-1} e^{pt}, t^{h-2} e^{pt}, \dots, e^{pt}
+\end{align}
+
+Fino ad arrivare ad avere $h = 0$.
+
+Se $\sigma \pm j \omega$ \`e un polo complesso con molteplicit\`a $h$, allora:
+\begin{align}
+  t^{h-1} e^{\sigma t} \cos(\omega t), t^{h-1} e^{\sigma t} \sin(\omega t), \dots, e^{\sigma t} \cos(\omega t), e^{\sigma t} \sin(\omega t)
+\end{align}
+
+Oppure:
+\begin{align}
+  t^{h-1} e^{\sigma t} \sin(\omega t), t^{h-2} e^{\sigma t} \sin(\omega t), \dots, e^{\sigma t} \sin(\omega t)
+\end{align}
+
+
+
+Ecco un'esempio:
+\begin{align}
+  G(s) = \frac{(s+1)(S^2 + 2S + 7)}{(s+4)^4(s+5[(s+1^2 +4)])}
+\end{align}
+
+
+I modi sono:
+\begin{align}
+  \Big\{
+    e^{-4t}, te^{-4t}, t^2e^{-4t}, t^3e^{-4t}, 
+    e^{-5t},
+    e^{-t} \sin(2t + \varphi_1) , t e^{-t} sin(2t + \varphi_2)
+    \Big\}
+\end{align}
+
+\section{Sistemi dinamici elementari}
+
+\begin{center}
+  \begin{tabular}{| c | c |}
+    \hline
+    $S$ & Massima sovrapposizione \\
+    $T_r$ & Tempo di ritardo \\
+    $T_s$ & Tempo di salita \\
+    $T_m$ & Istante di massima sovrapposizione \\
+    $T_a$ & Tempo di assestamento \\
+    \hline
+  \end{tabular}
+\end{center}
+
+
+\end{document}
