@@ -1,0 +1,91 @@
+\chapter{La trasformata di Laplace}
+
+\section{Proprietà della trasformata di Laplace}
+\subsection{Analiticità}
+La trasformata $F(s)$ \`e una funzione analitica sul semipiano $\{ s \in \mathbb{C} : Res > \sigma_{\mathbb{C}} \}$
+
+\subsection{Coniugazione}
+\begin{align}
+  \overline{F(s)} = F(\overline{s})
+\end{align}
+
+
+\subsection{Linearità}
+\begin{align}
+  \mathcal{L}[c_1 f_1(t) + c_2 f_2(t)] = c_1 \mathcal{L}[f_1(t)] + c_2 \mathcal{L}[f_2(t)]
+\end{align}
+
+
+
+\subsection{Iniettività}
+\begin{align}
+  \mathcal{L}[f(t)] = \mathcal{L}[g(t)] \Rightarrow f(t) = g(t)
+\end{align}
+
+\section{Trasformata di funzioni elementari}
+\subsection{Integrale}
+\begin{align}
+  \mathcal{L}\Bigg[\int_0^t f(\tau) d\tau\Bigg] = \frac{1}{s} F(s)
+\end{align}
+
+\section{Teoremi}
+\subsection{Valore iniziale}
+Sia $f \in \mathbb{C}^1(\mathbb{R_+})$, se esiste il limite:
+\begin{align}
+  \lim_{s \to +\infty} sF(s)
+\end{align}
+
+vale:
+\begin{align}
+  f(0^+) = \lim_{s \to +\infty} sF(s)
+\end{align}
+
+
+\subsection{Traslazione nel tempo}
+Per ogni $t_0 > 0$ vale:
+\begin{align}
+  \mathcal{L} [f(t-t_0) \cdot 1(t-t_0)] = e^{-t_0sF(s)}
+\end{align}
+
+\subsection{Traslazione nelal variabile complessa}
+Per ogni $$\alpha \in \mathbb{C}$$ vale:
+\begin{align}
+  \mathcal{L} [e^{\alpha t} f(t)] = F(s-\alpha)
+\end{align}
+
+
+
+\subsection{Convoluzione}
+Avendo $f(t) = g(t) = 0, \forall t < 0$, la convoluzione dei segnali $f$ e $g$ \`e definita come:
+\begin{align}
+  f * g &= \int_0^t f(v)g(t-v)dv \\ 
+  &= \int_0^t g(v)f(t-v)dv \\
+  &= g * f
+\end{align}
+
+La trasformata della convoluzione \`e:
+\begin{align}
+  \mathcal{L}[f*g] = \mathcal{L}\Bigg[ \int_0^t f(v)g(t-v)dv \Bigg] = F(s)G(s)
+\end{align}
+
+
+\section{Antitrasformata funzioni razionali}
+Per le antitransformate di funzioni razionali si utilizza il metodo dei 
+fratti semplici.
+
+\begin{align}
+  F(s) = \frac{k_1}{s- p_1} + \frac{k_2}{s- p_2} + \dots + \frac{k_n}{s- p_n}
+\end{align}
+
+Dove $k_i$ \`e il residuo e $p_i$ \`e il polo.
+
+\begin{align}
+  k_i = (s-p_i)F(s)\Big|_{s=p_i}
+\end{align}
+
+\section{Trasformate notevoli}
+
+\begin{align}
+  \mathcal{L}[t^n] &= \frac{n!}{s^{n+1}} \\
+  \mathcal{L}[e^{\alpha t}] &= \frac{1}{s-\alpha}
+\end{align}
