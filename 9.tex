@@ -1,2 +1,89 @@
 \chapter{Analisi armonica e diagrammi di Bode}
 
+
+% \section{Teorema analisi armonica}
+% Sia $\sum$ un sistema asintoticamente stabile con funzione di trasferimento $G(s)$ razionale, 
+% la risposta forzata 
+
+\section{Guadagno del sistema lineare}
+
+Abbiamo visto 3 tipi di guadagni:
+\begin{itemize}
+  \item $G(s)$ guadagno dianmico
+  \item $G(j\omega)$ risposta in frequenza
+  \item $G(0)$ guadagno statico
+\end{itemize}
+
+
+\section{Diagrammi di Bode}
+Sono diagrammi cartesiani logaritmici delle risposte armoniche, rappresentano le ampiezze e 
+le fasi della risposta in frequenza del sistema. 
+
+
+\section{Rappresentazione parametri della funzione di trasferimento}
+
+Funzione di trasferimento razionale scritta nella forma standard poli e zeri:
+\begin{align}
+  G(s) = K_1 \frac{(s-z_1)(s-z_2)\dots(s-z_m)}{(s-p_1)(s-p_2)\dots(s-p_n)}
+\end{align}
+
+$K_1$ è il guadagno statico del sistema, $z_i$ sono gli zeri e $p_i$ sono i poli. 
+
+Alcune volte può essere presente un polo nell'origine con uan certa molteplicità $h$:
+\begin{align}
+  G(s) = K_1 \frac{(s-z_1)(s-z_2)\dots(s-z_m)}{s^h(s-p_1)(s-p_2)\dots(s-p_n)}
+\end{align}
+
+
+\subsection{Modulo e fase}
+\begin{align}
+  % G(j\omega) = K_1 \frac{(j\omega-z_1)(j\omega-z_2)\dots(j\omega-z_m)}{(j\omega)^h(j\omega-p_1)(j\omega-p_2)\dots(j\omega-p_n)}
+  G(j\omega) &= |G(j\omega)|e^{j \arg G(j\omega)} \\
+  \alpha &= \ln |G(j\omega)| \\
+  \beta &= \arg G(j\omega) \\
+  G(j\omega) &= \alpha + j\beta
+\end{align}
+
+
+Di solito si rappresentano le ampiezze in decibel e le fasi in gradi. 
+Per calcolare i decibel si usa la seguente formula:
+\begin{align}
+  db = 20 \log_{10} |G(j\omega)|
+\end{align}
+
+
+Partendo dalla funzione di trasferimento in forma polinomiale:
+
+\begin{align}
+  G(j\omega) = K_1 \frac{(j\omega-z_1)(j\omega-z_2)\dots(j\omega-z_m)}{(j\omega)^h(j\omega-p_1)(j\omega-p_2)\dots(j\omega-p_n)}
+\end{align}
+
+Per calcolare il modulo si usa la seguente formula:
+\begin{align}
+  |G(j\omega)| = K_1 \frac{|j\omega-z_1||j\omega-z_2|\dots|j\omega-z_m|}{|j\omega|^h|j\omega-p_1||j\omega-p_2|\dots|j\omega-p_n|}
+\end{align}
+
+Dove $|j\omega| = \omega$ e $|j\omega-z_i| = \sqrt{\omega^2 + z_i^2}$
+
+Per la fase si usa la seguente formula:
+\begin{align}
+  \arg G(j\omega) = \arg K_1 + \arg (j\omega-z_1) + \arg (j\omega-z_2) + \dots + \arg (j\omega-z_m)  \\ 
+  - [h\arg (j\omega) + \arg (j\omega-p_1) + \arg (j\omega-p_2) + \dots + \arg (j\omega-p_n)]
+\end{align}
+
+Dove $\arg (j\omega) = \frac{\pi}{2}$ e $\arg (j\omega-p_i) = \arctan \frac{\omega}{p_i}$
+
+Quando disegni la fase nei grafici, ricorda che se la $K_1$ è negativa, allora la fase è sfasata di $\pi$(parti da $-\pi$).
+
+
+\subsection{Parametri di rsiposta armonica}
+\begin{center}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{|l|c|}
+    \hline
+    Pulsa di risonanza & $\omega_r = \arg \max |G(j\omega)|$ \\
+    Picco di risonanza & $M_R = \frac{|G(j\omega_r)|}{|G(j0)|}$ \\
+    Larghezza di banda & $\Delta \omega = \omega_2 - \omega_1$ \\
+    \hline
+  \end{tabular}
+\end{center}
