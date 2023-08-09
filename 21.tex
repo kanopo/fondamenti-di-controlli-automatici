@@ -1,0 +1,49 @@
+\chapter{Propriet\`a della trasformata $\mathcal{Z}$}
+
+
+
+\section{Trasformata di un segnale ritardato di $n$ passi}
+\begin{align}
+  \mathcal{Z}[x(k-n)] = z^{-n} \mathcal{Z}[x(k)] + \sum_{k=0}^{n-1} x(k-n) z^{-k}
+\end{align}
+
+
+
+\section{Segnale anticipato di $n$ passi}
+
+\begin{align}
+  \mathcal{Z}[x(k+n)] = z^{n} \mathcal{Z}[x(k)] - \sum_{i=0}^{n-1} x(i)z^{n-i}
+\end{align}
+
+
+
+\section{Teoriema del valore iniziale}
+\begin{enumerate}
+  \item Se $X(z)$ non ha poli nell'origine $|z| \geq 1$, vuol dire che i poli sono 
+  concentrati nel cerchio unitario
+  \item Se $X(z)$ non ha poli nell'origine $|z| \geq 1$ eccetto un polo semplice in 
+  $z=1$ allora $x(k)$ converge all'infinito
+  \item Se $X(z)$ ha un polo multiplo in $z=1$ allora non converge 
+  \item Se $X(z)$ ha un polo nella regione $|z| \geq 1, z \neq 1$ allora non converge
+\end{enumerate}
+
+\section{Trasformata $\mathcal{Z}$ di $a^k x(k)$}
+\begin{align}
+  \mathcal{Z}[a^k x(k)] = X(\frac{z}{a})
+\end{align}
+
+\section{Convoluzione a tempo discreto}
+\begin{align}
+  (x * y)(k) = x(k) * y(k) = \sum_{i=-\infty}^{+\infty} x(k-1)y(i)
+\end{align}
+
+La trasofrmata $\mathcal{Z}$ della convoluzione \`e:
+\begin{align}
+  \mathcal{Z}[x(k) * y(k)] = X(z)Y(z)
+\end{align}
+
+\section{Derivata della trasformata $\mathcal{Z}$}
+
+\begin{align}
+  -z \frac{d}{dz} X(z) = \mathcal{Z}[k x(k)]
+\end{align}

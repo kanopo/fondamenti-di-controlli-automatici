@@ -47,3 +47,30 @@ Applicando il terorema alla stabilit\`a dei sistemi retroazionati:
   \item $n_p$ \`e il numero di poli di $1 + G(s)H(s)$ appartenenti a $\mathbb{C}$
   \item $\psi$ \`e il numero di giri in senso orario
 \end{itemize}
+
+Il diagramma polare non deve mai toccare il punto $-1$.
+
+
+\section{Diagramma polare completo}
+La condizone necessaria e sufficiente affinch`e il sistema retroazionato
+sia asintoticamente stabile \`e che il diagramma polare completo non tocchi il punto $-1$ ma lo circondi 
+tante volte in senso antiorario quanti sono i poli positivi del guadagno ad anello con 
+parte reale positiva.
+
+\section{Margini di stabilit\`a}
+
+
+Ipotizzo di avere un guadagno ad anello $L(s) = G(s)H(s)$ asintoticamente stabile,
+quanto dista dall'instabilit\`a?
+
+Il margine di ampiezza $M_A$ e il margine di fase $M_F$ descrivono la distanza dal punto $-1$.
+
+\begin{align}
+  M_A = \frac{1}{|L(j\omega_p)|} \\
+  M_F = \pi - | \varphi_c |
+\end{align}
+
+La $\omega_p$ \`e la pulsazione per cui il diagramma di Nyquist interseca il punto $-1$, quindi dove $\arg L(j\omega_p) = -\pi$.
+
+
+$\varphi_c = \arg L(j\omega_c)$ e $\omega_c = |L(j\omega_c)| = 1$.
