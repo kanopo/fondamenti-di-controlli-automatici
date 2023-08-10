@@ -1,0 +1,195 @@
+\chapter{Progetto di un sistema di controllo in retroazione}
+
+
+\section{Specifiche di progetto}
+\begin{enumerate}
+  \item Buona connessione(numeratore minore del denominatore)
+  \item Stabilit\`a asintotica (radici del denominatore a parte reale negativa)
+  \item Prestazioni asintotiche
+  \item Prestazioni dinamiche
+  \item Robustezza
+\end{enumerate}
+
+
+
+\section{Regolatori standard}
+i regolatori standard si basano sulla combinazione di:
+\begin{itemize}
+  \item Proporzionale
+  \item Integrale
+  \item Derivativo
+\end{itemize}
+
+La funzione di trasferimento di un controllore proporzionale-integrale-derivativo 
+dove $R(s) = (1 + T_d s + \frac{1}{T_i s})$, sviluppando la funzione di trasferimento :
+\begin{align}
+  R(s) \approx K_p \frac{
+    T_d T_i s^2 + T_i s + 1
+  }{
+    T_i s (1 + \tau s)
+  }
+\end{align}
+  
+
+\section{Rete ritardatrice}
+Introduco:
+\begin{align}
+  C_r(s) = \frac{
+    1 + \alpha \tau s
+  }{
+    1 + \tau s
+  }
+\end{align}
+
+
+L'idea alla base della rete ritardatrice \`e quello di attenuare in alta frequenza
+il guadagno ad anello, modificando il diagramma polare per ottenere la stabilit\`a.
+
+
+La rete ritardatrice \`e un filtro passa basso, che attenua le alte frequenze.
+
+
+Progettiamo $\alpha$ e $\tau$ in modo da assicurare la stabilit\`a asintotica
+con un buon margine di ampiezza e fase.
+
+\textbf{Con la rete ritardatrice il guadagno ad anello rimane elevato alle basse frequenze(buone prestazioni statiche)
+ma riduce la banda passante(buone prestazioni dinamiche).}
+
+\section{Rete anticipatrice}
+\begin{align}
+  C_a(s) = \frac{
+    1 + \tau s
+  }{
+    1 + \alpha \tau s
+  }
+\end{align}
+
+
+
+La rete anticipatrice ha diverse caratteristiche:
+\begin{itemize}
+  \item mantenimento delle prestazioni statiche
+  \item stabilizzazione e allargamento banda passante del guadagno ad anello
+  \item aumento del grado di stabilit\`a $G_s$
+  \item diminuzione del tempo di assestamento $T_a$
+  \item miglior capacit\`a di inseguiemento del segnale
+\end{itemize}
+
+Lo svantaggio \`e che la rete anticipatrice introduce rumore,
+infatti $\alpha$ non pu\`o essere troppo piccolo.
+
+% \section{Sintesi in frequenza}
+%
+% Avendo una rete anticipatrice:
+% \begin{align}
+%   C_a(s) = \frac{
+%     1 + \tau s
+%   }{
+%     1 + \alpha \tau s
+%   }
+% \end{align}
+% La converto in frequenza:
+% \begin{align}
+%   C_a(j \omega) = \frac{
+%     1 + j \omega \tau
+%   }{
+%     1 + j \alpha \omega \tau
+%   }
+% \end{align}
+%
+% Posso calcolare modulo e fase:
+%
+% \begin{align}
+%   M &= \frac{
+%     \sqrt{1 + \omega^2 \tau^2}
+%   }{
+%     \sqrt{1 + \alpha^2 \omega^2 \tau^2}
+%   }\\
+%   \varphi &= \arctan(\omega \tau) - \arctan(\alpha \omega \tau)
+% \end{align}
+%
+% Per effettuare l'inverso, avendo modulo e fase:
+%
+% \begin{align}
+%   \alpha &= \frac{
+%     M \cos \varphi - 1
+%   }{
+%     M (M - \cos \varphi)
+%   } \\
+%   \tau \omega &= \frac{
+%     M - \cos \varphi
+%   }{
+%     \sin \varphi
+%   }
+% \end{align}
+%
+% \subsection{Rete anticipatrice e imposizione del margine di fase}
+%
+% Scegliere $\omega_0$ affinch\`e:
+% \begin{align}
+%   \varphi_0 = M_F - \arg L (j \omega_0) - \pi
+% \end{align}
+%
+% valga:
+% \begin{align}
+%   \cos \varphi_0 > | L(j \omega_0) |
+% \end{align}
+%
+% dopo aver definito:
+% \begin{align}
+%   M &= \frac{
+%     1
+%   }{
+%     | L(j \omega_0) |
+%   } \\
+%   \varphi &= \varphi_0  \\
+%   \tau &= \frac{
+%     M - \cos \varphi
+%   }{
+%     \omega_0 \sin \varphi
+%   } \\
+%   \alpha &= \frac{
+%     M \cos \varphi - 1
+%   }{
+%     M (M - \cos \varphi)
+%   }
+% \end{align}
+%
+% \begin{align}
+%   M_F(\omega_0) = \pi + \arg L(j \omega_0) + \arccos | L(j\omega_0) |
+% \end{align}
+%
+%
+% \subsection{Rete ritardatrice e imposizione del margine di fase}
+%
+% Si sceglie $\omega_0$ affinch\`e:
+% \begin{align}
+%   \varphi_0 = \arg L(j \omega_0) + \pi - M_F
+% \end{align}
+%
+% con $\varphi_0 > \frac{1}{|L(j\omega_0)|}$
+%
+% Segue che:
+% \begin{align}
+%   M = | L(j\omega_0) | \\
+%   \varphi = \varphi_0 \\
+%   \tau = \frac{
+%     M - \cos \varphi
+%   }{
+%     \omega_0 \sin \varphi
+%   } \\
+%   \alpha = \frac{
+%     M \cos \varphi - 1
+%   }{
+%     M (M - \cos \varphi)
+%   }
+% \end{align}
+%
+%
+% \subsection{Rete anticipatrice e imposizione del margine di ampiezza}
+%
+% PAGINA 37 -> 41
+
+
+
+

@@ -1,0 +1,39 @@
+\chapter{Introduzione al controllo digitale}
+
+\section{Convertitore A/D}
+
+Convertitore che campiona il segnale analogico in digitale con periodo $T$.
+
+\begin{align}
+  x(t) \rightarrow x(kT), \quad k \in \mathbb{Z}
+\end{align}
+
+
+
+Come Shennon ci ricorda dalle superiori, se la massima frequenza di un segnale
+che si vuole campionare \`e $f_{max}$, allora la frequenza di campionamento
+dovr\`a essere \textbf{almeno} $2f_{max}$.
+
+La pulsazione di campionamento \`e $\Omega = \frac{2\pi}{T}$.
+
+\section{Trasformata $\mathcal{Z}$}
+
+Sia $x: \mathcal{Z} \rightarrow \mathbb{R}$ o ($\mathbb{C}$) un segnale
+a tempo discreto, la trasforamta $\mathcal{Z}$ di $x(k)$ \`e definita come:
+\begin{align}
+  \mathcal{Z}[x] = \mathcal{Z}[x(k)] = \sum_{k=0}^{+\infty} x(k) z^{-k}
+\end{align}
+
+Dove la variabile $z$ \`e una variabile complessa.
+
+
+Introduco la regione di convergenza (ROC): data la sequanza $x(k)$, la ROC 
+di $X(s) = \mathcal{Z}[x(k)]$ \`e definita come:
+\begin{align}
+  \{ z \in \mathbb{C} : | \sum_{k=0}^\infty x(k)z^{-k} | < \infty \}
+\end{align}
+
+
+
+
+

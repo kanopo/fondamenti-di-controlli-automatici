@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt]{report}
 
 % ----------------------------------------------------
 % PACKAGE
@@ -9,295 +9,67 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{hyperref}
-\usepackage[a4paper, portrait, margin=0.75in]{geometry}
+\usepackage[a4paper, portrait, margin=0.5in]{geometry}
 \usepackage[italian]{babel}
 \usepackage{enumerate}% http://ctan.org/pkg/enumerate
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    urlcolor=blue,
-}
 
-\title{Analisi dei dati \\[1ex] \large Un goliardico riassunto}
+% \usepackage{tcolorbox} % usato per fare le box colorate
+% \usepackage{soul} % usato per barrare il testo
+% % \usepackage{algorithm} % usato per scrivere algoritmi
+% \usepackage{algpseudocode}
+% \usepackage{algorithm2e}
+% \usepackage{tikz}
+\usepackage{circuitikz}
+% \usepackage{listings}
+
+% \lstset{
+%   language=Python,
+%   basicstyle=\ttfamily,
+%   keywordstyle=\color{blue},
+%   stringstyle=\color{red},
+%   commentstyle=\color{green},
+%   numbers=left,
+%   numberstyle=\tiny\color{gray},
+%   breaklines=true,
+%   frame=single,
+%   captionpos=b,
+%   showstringspaces=false,
+%   tabsize=2
+% }
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=black,
+%     urlcolor=blue,
+% }
+
+\title{Fondamenti di controlli automatici}
 \author{Ollari Dmitri}
 
 \begin{document}
     \maketitle
-    
 
     \tableofcontents
-    \listoffigures
-
-    \newpage
-
-\section{Analisi complessa}
-Quando si ha a che fare con equazioni differenziali lineari, solitamente si preferisce trasformare il calcolo da dominio del tempo $t$ a dominio complesso $s$,
-svolgere il calcolo come se fosse una problema polinomiale e ritornare nel dominio del tempo $t$ con il problema risolto.
-
-\subsection{Poli}
-Avendo una funzione d'esempio:
-\begin{align}
-  \frac{s(s+6)^3}{(s-2)(s+3)^2(s+5)^4}
-\end{align}
-
-I poli in questo caso sono:
-\begin{itemize}
-  \item $s = 2$ di ordine 1
-  \item $s = -3$ di ordine 2
-  \item $s = -5$ di ordine 4
-\end{itemize}
-
-
-\subsection{Zeri}
-Avendo una funzione d'esempio:
-\begin{align}
-  \frac{s(s+6)^3}{(s-2)(s+3)^2(s+5)^4}
-\end{align}
-
-Gli zeri in questo caso sono:
-\begin{itemize}
-  \item $s = 0$ di ordine 1
-  \item $s = -6$ di ordine 3
-\end{itemize}
-
-\section{Trasformata di Laplace}
-La trasformata di laplace \`e comoda perch\`e permette di trasformare un problema differenziale in un problema algebrico e nel farlo mantiene la proprietà di linerià.
-Il che permette di:
-\begin{align}
-  \mathcal{L}[c_1 f_1(t) + c_2 f_2(t)] = c_1 \mathcal{L}[f_1(t)] + c_2 \mathcal{L}[f_2(t)]
-\end{align}
-
-La trasformata di Laplace rispetta anche la proprietà di Iniettività, ovvero:
-\begin{align}
-  \mathcal{L}[f(t)] = \mathcal{L}[g(t)] \implies f(t) = g(t)
-\end{align}
-
-\renewcommand{\arraystretch}{1.5} % Aumenta la spaziatura verticale
-\subsection{Trasformate di laplace interessanti}
-\begin{center}
-  
-\begin{tabular}{| c | c |}
-  \hline
-  Segnale & Trasformata di Laplace \\
-  \hline
-  Gradino unitario & $\mathcal{L}[1(t)] = \frac{1}{s}$ \\
-  \hline
-  Segnale esponenziale & $\mathcal{L}[e^{at}] = \frac{1}{s-a}$ \\
-  \hline
-  & $\mathcal{L}[t^n] = \frac{n!}{s^{n+1}}$ \\
-  \hline
-  Derivata segnale impulsivo & $\mathcal{L}[\delta^{(n)}(t)] = s^n$ \\
-  \hline
-  Segnale impulsivo & $\mathcal{L}[\delta(t)] = 1$ \\
-  \hline
-  Segnale sinusoidale & $\mathcal{L}[\sin(a t)] = \frac{a}{s^2 + a^2}$ \\
-  \hline
-  Segnale cosinusoidale & $\mathcal{L}[\cos(a t)] = \frac{s}{s^2 + a^2}$ \\
-  \hline
-\end{tabular}
-\end{center}
-
-\section{Funzione di trasferimento}
-\subsection{Guadanagno statico}
-\begin{align}
-  Y(s) = G(0) U(s)
-\end{align}
-
-\subsection{polinomio caratteristico}
-Dato:
-\begin{align}
-  \sum_{i=0}^n a_i D^i y = \sum_{i=0}^m b_i D^i u
-\end{align}
-
-Il polinomio caratteristico è:
-\begin{align}
-  a(s) = \sum_{i=0}^n a_i S^i
-\end{align}
-
-
-\subsection{Poli e Zeri}
-I poli sono le radici di $a(s)$, gli zeri sono le radici di $b(s)$.
-
-
-\subsection{Modi}
-Se $p$ \`e un polo reale con molteplicit\`a $h$, allora:
-\begin{align}
-  t^{h-1} e^{pt}, t^{h-2} e^{pt}, \dots, e^{pt}
-\end{align}
-
-Fino ad arrivare ad avere $h = 0$.
-
-Se $\sigma \pm j \omega$ \`e un polo complesso con molteplicit\`a $h$, allora:
-\begin{align}
-  t^{h-1} e^{\sigma t} \cos(\omega t), t^{h-1} e^{\sigma t} \sin(\omega t), \dots, e^{\sigma t} \cos(\omega t), e^{\sigma t} \sin(\omega t)
-\end{align}
-
-Oppure:
-\begin{align}
-  t^{h-1} e^{\sigma t} \sin(\omega t), t^{h-2} e^{\sigma t} \sin(\omega t), \dots, e^{\sigma t} \sin(\omega t)
-\end{align}
-
-
-
-Ecco un'esempio:
-\begin{align}
-  G(s) = \frac{(s+1)(S^2 + 2S + 7)}{(s+4)^4(s+5[(s+1^2 +4)])}
-\end{align}
-
-
-I modi sono:
-\begin{align}
-  \Big\{
-    e^{-4t}, te^{-4t}, t^2e^{-4t}, t^3e^{-4t}, 
-    e^{-5t},
-    e^{-t} \sin(2t + \varphi_1) , t e^{-t} sin(2t + \varphi_2)
-    \Big\}
-\end{align}
-
-\section{Sistemi dinamici elementari}
-
-\begin{center}
-  \begin{tabular}{| c | c |}
-    \hline
-    $S$ & Massima sovrapposizione \\
-    $T_r$ & Tempo di ritardo \\
-    $T_s$ & Tempo di salita \\
-    $T_m$ & Istante di massima sovrapposizione \\
-    $T_a$ & Tempo di assestamento \\
-    \hline
-  \end{tabular}
-\end{center}
-
-\subsection{Sistemi del secondo ordine}
-
-  \begin{align}
-    G(s) = \frac{\omega_n^2}{s^2 + 2 \delta \omega_n s + \omega_n^2}
-  \end{align}
-
-  Dove $\omega_n$ \`e la pulsazione naturale e $\delta$ \`e il coefficiente di smorzamento.
-
-
-  \section{Stabilit\`a dei sistemi dinamici}
-
-  \begin{center}
-    \begin{tabular}{| l | l |}
-      \hline
-      Stabile & Per tutte le perturbazioni, la risposta libera \`e limitata \\
-      \hline
-      Asintoticamente stabile & Per tutte le perturbazioni, la risposta libera tende a zero \\
-      \hline
-      Semplicemente stabile & Stabile ed esiste una perturbazione che fa divergere la risposta libera \\
-      \hline 
-      Instabile & Non \`e stabile \\
-      \hline
-    \end{tabular}
-  \end{center}
-
-  \subsection{Stabilit\`a poli e zeri}
-  \begin{center}
-    \begin{tabular}{| l | l |}
-      \hline
-        Stabile & Tutti i poli hanno parte reale non positiva, eventuali poli \\
-        & puramente immaginari sono semplici \\
-
-      \hline
-        Asintoticamente stabile & Tutti i poli hanno parte reale negativa \\
-      \hline
-        Semplicemente stabile & Tutti i poli hanno parte reale non positiva e \\ 
-        & quelli puramente immaginari (che devono esistere) sono semplici \\
-
-      \hline
-        Instabile & Esiste almeno un polo con parte reale positiva \\
-        & oppure esiste un polo puramente immaginario con molteplicit\`a maggiore di uno \\
-
-      \hline
-    \end{tabular}
-  \end{center}
-
-  \subsection{Teorema di Routh}
-  Assunto che riesco a completare la tabella di Routh, ad ogni variazione di segno dell'elemento nella colonna 1, corrisponde
-  una radice con parte reale positiva,
-  
-  Vale lo stesso principio anche per il numero di radici reali negative, ad ogni continuazione dedl segno della elemento nella colonna 1,
-  corrisponde una radice negativa.
-
-
-
-  \subsubsection{Tabella}
-  Per la costruzione della tabelli mi aiuto con un polinomio caratteristico del tipo:
-  \begin{align}
-    (s-1)(s^2+4s+5) + k(s+1)  = \\
-    s^3 + 3s^2 + (k + 1)s + k - 5
-  \end{align}
-
-  Per prima cosa si inserisce nella tabella il polinomio di partenza.
-
-  \begin{center}
-    \begin{tabular}{| c | c  c  c |}
-      \hline
-      3 & 1 & k + 1 & 0 \\
-      2 & 3 & k - 5 & 0 \\
-      1 & $2k + 8$ & 0 & 0 \\
-      0 & $k - 5$ & 0 & 0 \\
-      \hline
-    \end{tabular}
-  \end{center}
-
-  Una volta inserite nella tabella le prime due righe, si procede con il calcolo delle righe successive.
-  Si utilizzeranno la seguente tabella di riferimento:
-
-  \begin{center}
-    \begin{tabular}{| c | c  c  c |}
-      \hline
-      3 & $\gamma_{0, 0}$ & $\gamma_{0, 1}$ & $\gamma_{0, 2}$ \\
-      2 & $\gamma_{1, 0}$ & $\gamma_{1, 1}$ & 0 \\
-      1 & $\gamma_{2, 0}$ & 0 & 0 \\
-      0 & $\gamma_{3, 0}$ & 0 & 0 \\
-      \hline
-    \end{tabular}
-  \end{center}
-
-  Dove $\gamma_{i, j}$ \`e definito come:
-  \begin{align}
-    \gamma_{i, j} = \frac{
-      \begin{pmatrix}
-        \gamma_{i-2, 0} & \gamma_{i-2, j+1} \\
-        \gamma_{i-1, 0} & \gamma_{i-1, j+1}
-      \end{pmatrix}
-    }{\gamma_{i-1, 0}}
-  \end{align}
-
-
-  Un metodo visuale per ricordare come moltiplicare e dividere i valori della tabella \`e il seguente:
-  \begin{align}
-    \frac{
-      \begin{pmatrix}
-        a & b \\
-        c & d \\
-      \end{pmatrix}
-    }{c}
-  \end{align}
-
-
-  Quindi per poter dire che il sistema risulta stabile dobbiamo confermare che gli elementi della 
-  prima colonna mantenga il segno.
-
-  \begin{align}
-    &\begin{cases}
-      2k + 8 > 0 \\
-      k-5 > 0
-    \end{cases}
-    \\
-    &\begin{cases}
-      k > -4 \\
-      k > 5
-    \end{cases}
-  \end{align}
-  Quindi il sistema retrazionato \`e stabile se e solo se $k > 5$.
-
-
-
-
-  \section{Analisi armonica e Bode}
+    \include{1}
+    \include{2}
+    % \include{3}
+    \include{4}
+    % \include{5}
+    \include{6}
+    \include{7}
+    \include{8}
+    \include{9}
+    \include{10}
+    \include{11}
+    \include{12}
+    \include{13}
+    \include{14}
+    \include{15}
+    \include{16}
+    \include{17}
+    \include{20}
+    \include{21}
+    \include{22}
+    \include{23}
 
 \end{document}
+
