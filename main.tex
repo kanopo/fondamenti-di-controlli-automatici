@@ -1,4 +1,40 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 
-% math related packages
+% math packages
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
 
+% graphics packages
+\usepackage{graphicx}
+
+% code packages
+\usepackage{listings}
+
+% language packages
+\usepackage[italian]{babel}
+
+% page geometry
+\usepackage[a4paper, portrait, margin=0.85in]{geometry}
+
+% links
+\usepackage[colorlinks]{hyperref}
+
+
+\begin{document}
+
+\title{
+  Fondamenti di controlli automatici
+}
+\author{Ollari Ischimji Dmitri}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\include{./01_controllo_attivo.tex}
+
+\end{document}
