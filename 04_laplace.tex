@@ -1,0 +1,92 @@
+\section{La trasformata di Laplace}
+
+La trasformata di Laplace è un'operazione funzionale che converte una equazione differenziale in una equazione algebrica.
+
+La trasfomata di Laplace di una funzione $f(t)$ è definita come:
+\begin{align}
+	F(s) = \int_{0}^{\infty} f(t) e^{-st} dt
+\end{align}
+
+\subsection{Transfomate di Laplace notevoli}
+\renewcommand{\arraystretch}{2.0}
+\begin{table}[!ht]
+	\begin{adjustbox}{width=0.6\columnwidth,center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Segnale                               & $f(t)$                      & $F(s)$                                           \\
+			\hline
+			Gradino unitario                      & $1(t)$                      & $\frac{1}{s}$                                    \\
+			\hline
+			Segnale esponeziale                   & $e^{at}$                    & $\frac{1}{s-a}$                                  \\
+			\hline
+			Derivata prima                        & $Df(t)$                     & $s F(s) - f(0)$                                  \\
+			\hline
+			Derivata di ordine $i$                & $D^i f(t)$                  & $s^i F(s) - \sum_{j=0}^{i-1} s^j D^{i-j-1} f(0)$ \\
+			\hline
+			Integrale                             & $\int_0^t f(x) dx$          & $\frac{1}{s} F(s)$                               \\
+			\hline
+			Traslazione nel tempo                 & $f(t - t_0) \cdot 1(t-t_0)$ & $e^{-t_0 s} F(s)$                                \\
+			\hline
+			Traslazione nella variabile complessa & $e^{at} f(t)$               & $F(s-a)$                                         \\
+			\hline
+			-                                     & $t^n e^{at}$                & $\frac{n!}{(s-a)^{n+1}}$                         \\
+			\hline
+			Convoluzione                          & $\int_0^t f(x)g(t-x)dx$     & $F(s)G(s)$                                       \\
+			\hline
+		\end{tabular}
+	\end{adjustbox}
+	\caption{Trasformate di Laplace}
+	\label{tab:laplace}
+\end{table}
+
+\subsection{Proprietà della trasformata di Laplace}
+La linearità della trasformata di Laplace è definita come:
+\begin{align}
+	\mathcal{L} [a f(t) + b g(t)] = a \mathcal{L} [f(t)] + b \mathcal{L} [g(t)]
+\end{align}
+
+Mentre l'iniettività è definita come:
+\begin{align}
+	\mathcal{L} [f(t)] = \mathcal{L} [g(t)] \implies f(t) = g(t)
+\end{align}
+
+
+\subsection{Anti-trasformata di Laplace}
+
+Sia:
+\begin{align}
+  F(s) = \frac{b(s)}{a(s)}
+\end{align}
+
+Assumneto che:
+\begin{itemize}
+  \item $\deg b(s) < \deg a(s)$
+  \item $a(s)$ e $b(s)$ sono coprimi fra loro
+  \item $n := \deg a(s)$
+  \item Poli semplici
+\end{itemize}
+
+Posso definire la anti-trasformata di Laplace come:
+\begin{align}
+  f(t) = \mathcal{L}^{-1} [F(s)]
+\end{align}
+
+
+Per ricondurre la formula in somma si poli semplici si ricorre allo \textbf{sviluppo in fratti semplici} per ricondurre la formula a:
+\begin{align}
+  F(s) = \frac{k_1}{s-p_1} + \frac{k_2}{s-p_2} + \dots + \frac{k_n}{s-p_n}
+\end{align}
+
+Dove $k_i$ sono i residui e $p_i$ sono i poli.
+
+Per calcolare i residui si usa la formula:
+\begin{align}
+  k_i = (s - p_i) F(s) \bigg|_{s = p_i} \quad i = 1, \dots, n
+\end{align}
+
+Il che ci porta ad avere una formula per l'antitraformata di Laplace:
+\begin{align}
+  f(t) = \sum_{i=1}^{n} k_i e^{p_i t}
+\end{align}
+
+
