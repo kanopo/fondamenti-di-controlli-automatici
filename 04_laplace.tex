@@ -55,38 +55,38 @@ Mentre l'iniettività è definita come:
 
 Sia:
 \begin{align}
-  F(s) = \frac{b(s)}{a(s)}
+	F(s) = \frac{b(s)}{a(s)}
 \end{align}
 
 Assumneto che:
 \begin{itemize}
-  \item $\deg b(s) < \deg a(s)$
-  \item $a(s)$ e $b(s)$ sono coprimi fra loro
-  \item $n := \deg a(s)$
-  \item Poli semplici
+	\item $\deg b(s) < \deg a(s)$
+	\item $a(s)$ e $b(s)$ sono coprimi fra loro
+	\item $n := \deg a(s)$
+	\item Poli semplici
 \end{itemize}
 
 Posso definire la anti-trasformata di Laplace come:
 \begin{align}
-  f(t) = \mathcal{L}^{-1} [F(s)]
+	f(t) = \mathcal{L}^{-1} [F(s)]
 \end{align}
 
 
 Per ricondurre la formula in somma si poli semplici si ricorre allo \textbf{sviluppo in fratti semplici} per ricondurre la formula a:
 \begin{align}
-  F(s) = \frac{k_1}{s-p_1} + \frac{k_2}{s-p_2} + \dots + \frac{k_n}{s-p_n}
+	F(s) = \frac{k_1}{s-p_1} + \frac{k_2}{s-p_2} + \dots + \frac{k_n}{s-p_n}
 \end{align}
 
 Dove $k_i$ sono i residui e $p_i$ sono i poli.
 
 Per calcolare i residui si usa la formula:
 \begin{align}
-  k_i = (s - p_i) F(s) \bigg|_{s = p_i} \quad i = 1, \dots, n
+	k_i = (s - p_i) F(s) \bigg|_{s = p_i} \quad i = 1, \dots, n
 \end{align}
 
 Il che ci porta ad avere una formula per l'antitraformata di Laplace:
 \begin{align}
-  f(t) = \sum_{i=1}^{n} k_i e^{p_i t}
+	f(t) = \sum_{i=1}^{n} k_i e^{p_i t}
 \end{align}
 
 
