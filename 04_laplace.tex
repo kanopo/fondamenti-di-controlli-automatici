@@ -10,12 +10,16 @@ La trasfomata di Laplace di una funzione $f(t)$ è definita come:
 \subsection{Transfomate di Laplace notevoli}
 \renewcommand{\arraystretch}{2.0}
 \begin{table}[!ht]
-	\begin{adjustbox}{width=0.6\columnwidth,center}
+	\begin{adjustbox}{width=0.8\columnwidth,center}
 		\begin{tabular}{|c|c|c|}
 			\hline
 			Segnale                               & $f(t)$                      & $F(s)$                                           \\
 			\hline
 			Gradino unitario                      & $1(t)$                      & $\frac{1}{s}$                                    \\
+      \hline 
+      Rampa unitaria                        & $t \cdot 1(t)$              & $\frac{1}{s^2}$                                  \\
+      \hline
+      Parabola unitaria                     & $\frac{1}{2}t^2 \cdot 1(t)$            & $\frac{1}{s^3}$                                  \\
 			\hline
 			Segnale esponeziale                   & $e^{at}$                    & $\frac{1}{s-a}$                                  \\
 			\hline
