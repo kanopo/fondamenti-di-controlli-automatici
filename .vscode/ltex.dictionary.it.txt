@@ -1,5 +1,0 @@
-polo-zero
-Bounded
-Routh
-Hurwitz
-hurwitziano

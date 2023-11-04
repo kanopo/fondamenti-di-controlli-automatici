@@ -1,1 +1,0 @@
-{"rule":"GR_04_002","sentence":"^\\QLa risposa al gradino unitario dipende quasi esclusivamente dai soli poli dominanti del sistema, se i poli sono complessi e coniugati posso usare le definizioni di \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q e \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q dei sistemi di ordine due.\\E$"}
