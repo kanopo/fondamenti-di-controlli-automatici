@@ -6,6 +6,7 @@ on:
       - '**'  # This will trigger the workflow for any push to any branch
     paths:
       - 'main.tex'  # Only run if there's a change to the main.tex file
+  workflow_dispatch:  # This enables manual triggering of the workflow.
 
 jobs:
   build:
