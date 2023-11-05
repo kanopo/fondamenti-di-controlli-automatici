@@ -1,0 +1,74 @@
+\section{I diagrammi di Nyquist e i sistemi a fase minima}
+
+\subsection{I diagrammi polari o di Nyquist}
+I diagrammi polari o di Nyquist sono importanti nello studio della stabilità
+dei sistemi retroazionati.
+
+Prendendo come esempio la funzione di trasferimento:
+\begin{align}
+    G(j\omega) = \frac{10}{(1 + \frac{1}{5} j\omega)(1 + \frac{1}{10} j\omega)(1 + \frac{1}{100} j\omega)}
+\end{align}
+
+
+
+Si possono calcolare i punti del diagramma di Nyquist mediante l'utilizzo di 
+modulo e fase della funzione di trasferimento:
+\begin{align}
+    |G(j\omega)| = K_1 \frac{M_1}{M_2 M_3 M_4}
+\end{align}
+
+\begin{align}
+    \angle G(j\omega) = \begin{cases}
+        \varphi_1 - \varphi_2 - \varphi_3 - \varphi_4 & \text{se } K_1 > 0 \\
+        \varphi_1 - \varphi_2 - \varphi_3 - \varphi_4 - \pi & \text{se } K_1 < 0
+    \end{cases}
+\end{align}
+
+
+\subsection{I sistemi a fase minima}
+
+\begin{definition}[Sistemi a fase minima(non minima)]
+    Sia $\sum$ un sistema lineare e stazionario con funzione di trasferimento
+    $G(s)$ e risposta armonica $G(j\omega)$.
+    
+    $\sum$ si dice a fase minima (fase non minima) se il diagramma delle fasi
+    $\beta = \arg G(j\omega)$ è (non è) determinata univocamente, con modulo $2\pi$,
+    dal diagramma dei moduli $\alpha = |G(j\omega)|$ mediante la formula di Bode.
+\end{definition}
+
+Si ricava che una funzione di trasferimento \textbf{razionale} $G(s)$ è a fase
+minima se e solo se non sono presenti poli o zeri con parte reale positiva.
+
+
+
+\subsection{Approssimanti di Padé del ritardo finito}
+
+L'Approssimante di Padé di $e^{-t_0 s}$ di ordine $q$ è la funzione razionale:
+\begin{align}
+    G_q (s; t_0) := \frac{
+        \sum_{k=0}^q \frac{(2q - k)! q!}{(2q)!k!(q-k)!} (-1)^k t_0^k s^k
+    }{
+        \sum_{k=0}^q \frac{(2q - k)! q!}{(2q)!k!(q-k)!} t_0^k s^k
+    }
+\end{align}
+
+
+\subsection{Tracciamento qualitativo del diagramma polare (o di Nyquist) della risposta armonica di un sistema $G(s)$}
+\begin{enumerate}
+    \item Scrivere $G(s)$ nella forma standard con le costanti di tempo
+        \begin{itemize}
+            \item Se non ci sono poli nell'origine ($h=0$), può andar bene la forma
+                standard con i poli e gli zeri reali.
+            \item Si sostituisce ad $s$ la variabile $j\omega$.
+        \end{itemize}
+    \item Si determinano le espressioni di $|G(j\omega)|$ e $\angle G(j\omega)$
+        in funzione di $\omega$.
+        
+    \item Si studia il comportamento di $|G(j\omega)|$ e $\angle G(j\omega)$
+        per $\omega \to 0$ e $\omega \to \infty$.
+    
+    \item Si determina l'intersezione del diagramma polare con l'asse reale negativo
+        (se esiste).
+        
+    \item Sulla base dei punti precedenti si traccia il diagramma polare.
+\end{enumerate}

@@ -1,0 +1,101 @@
+\section{Sistemi dinamici elementari} \label{sec:Sistemi dinamici elementari}
+
+\subsection{Sistemi del primo ordine(strettamente propri)}
+
+
+\begin{align}
+  G(s) = \frac{1}{1 + \tau s}
+\end{align}
+
+Se applico alla funzione di trasferimento un ingresso a gradino ottengo la risposta diventa:
+\begin{align}
+  g_s(t) &= \mathcal{L}^{-1} \Big[ \frac{1}{1+\tau s} \cdot \frac{1}{s} \Big] \\
+  &= 1 - e^{-\frac{t}{\tau}}
+\end{align}
+
+I parametri interessanti delle risposte al gradino sono:
+\begin{itemize}
+  \item $S$ Massima sovraelongazione (percentuale del valore di regime)
+  \item $T_r$ Tempo di ritardo
+  \item $T_s$ Tempo di salita
+  \item $T_m$ Istante di massima sovraelongazione
+  \item $T_a$ Tempo di assestamento
+\end{itemize}
+
+
+\subsection{Sistemi del secondo ordine(senza zeri)}
+
+La funzione di trasferimento è:
+\begin{align}
+  G(s) = \frac{\omega_n^2}{s^2 + 2 \delta \omega_n s + \omega_n^2}, \quad G(0) = 1
+\end{align}
+
+Da notare che:
+\begin{itemize}
+  \item $\omega_n$ è la pulsazione naturale
+  \item $\delta$ è il coefficiente di smorzamento
+\end{itemize}
+
+La risposta al gradino unitario è:
+\begin{align}
+  y(t) &= \mathcal{L}^{-1} \Big[  \frac{\omega_n^2}{s^2 + 2 \delta \omega_n s + \omega_n^2}  \cdot \frac{1}{s}\Big] \\
+  &= 1 - \frac{1}{\sqrt{1-\delta^2}} e^{-\delta \omega_n t} \sin (\omega t + \varphi)
+\end{align}
+
+
+Si possono ricavare i seguenti parametri:
+\begin{align}
+  \omega &= \omega_n \sqrt{1-\delta^2} \\
+  \varphi &= \arccos (\delta) = \arcsin (\sqrt{1 - \delta^2}) = \arctan \frac{\sqrt{1-\delta^2}}{\delta}
+\end{align}
+
+
+
+La massima sovrapposizione è:
+
+\begin{align}
+  S = 100 e^{-\frac{\pi \delta}{\sqrt{1-\delta^2}}}
+\end{align}
+
+Il tempo di assestamento è:
+\begin{align}
+  T_a \cong \frac{3}{\delta \omega_n}
+\end{align}
+
+
+Il tempo di salita è approssimato con:
+\begin{align}
+  T_s \approx \frac{1.8}{\omega_n}
+\end{align}
+
+
+\subsection{Poli dominanti di un sistema dinamico}
+% Avendo un sistema generico con funzione di trasferimento:
+% \begin{align}
+%   G(s) = \frac{b(s)}{a(s)}
+% \end{align}
+
+% con $n$ poli e $m$ zeri, ecco un esempio per capire meglio:
+% \begin{align}
+%   G_1(s) = \frac{20}{(s+1)(s+4)(s+5)}
+% \end{align}
+
+% I \textbf{poli} della funzione di trasferimento sono:
+% \begin{itemize}
+%   \item $-1$
+%   \item $-4$
+%   \item $-5$
+% \end{itemize}
+
+
+
+
+\textbf{Sono i poli (normalmente una coppia), non soggetti a quasi cancellazione polo-zero, più vicini all'asse immaginario}
+
+La risposa al gradino unitario dipende quasi esclusivamente dai soli poli dominanti del
+sistema, se i poli sono complessi e coniugati posso usare le definizioni di $S$, $T_s$ e $T_a$ 
+dei sistemi di ordine due.
+
+
+
+

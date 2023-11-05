@@ -1,0 +1,76 @@
+\section{Le funzioni impulsive e l'insieme dei behaviors}
+
+\subsection{Le funzioni impulsive}
+
+Gradino unitario:
+\begin{align}
+	1(t) := \begin{cases}
+		        0 & t < 0    \\
+		        1 & t \geq 0
+	        \end{cases}
+\end{align}
+
+Introduco la funzione $f(t;\tau) \in \mathcal{C}^0$:
+\begin{align}
+	f(t;\tau) := \begin{cases}
+		             0               & t < \tau        \\
+		             \frac{1}{\tau}t & 0 \leq t < \tau \\
+		             1               & t > \tau
+	             \end{cases}
+\end{align}
+
+Formalmente si definisce la \textbf{delta di Dirac} come:
+\begin{align}
+	\delta(t) := \lim_{\tau \to 0} Df(t;\tau)
+\end{align}
+
+Ricordo che la derivata di una funzione $f(t:\tau)$ è:
+
+\begin{align}
+	Df(t;\tau) := \begin{cases}
+		              0              & t < \tau        \\
+		              \frac{1}{\tau} & 0 \leq t < \tau \\
+		              1              & t > \tau
+	              \end{cases}
+\end{align}
+
+
+\subsection{Derivata generalizzata di una funzione discontinua}
+
+$f \in \mathcal{C}^{+\infty}_p(\mathbb{R})$ e sia $t = 0$ il solo istante di discontionuità di $f$.
+
+Definisco la derivata generalizzata di $f$ come:
+\begin{align}
+	g(t) & := \begin{cases}
+		          f(t)               & t < 0    \\
+		          f(t) - (f_+ - f_-) & t \geq 0 \\
+	          \end{cases} \\
+	g(t) & \in \mathcal{C}^0
+\end{align}
+
+
+Ovvero che la \textbf{funzione discontinua} $=$ \textbf{funzione continua} $+$ \textbf{funzione a gradino}.
+
+Usando la derivata generalizzata:
+\textbf{Derivata generalizzata di ordine 1} $=$ \textbf{funzione discontinua} $+$ \textbf{funzione impulsiva(ordine 0)}.
+
+
+
+Principio di identità delle funzioni impulsive:
+Le funzione impulsiva:
+\begin{align}
+  c_{-1} + c_0\delta(0) + c_1\delta'(0) + c_2\delta''(0) + \dots + c_n\delta^{(n)}(0)
+\end{align}
+
+E la funzione impulsiva:
+\begin{align}
+  d_{-1} + d_0\delta(0) + d_1\delta'(0) + d_2\delta''(0) + \dots + d_m\delta^{(m)}(0)
+\end{align}
+
+Sono uguale se e solo se:
+\begin{align}
+  c_i = d_i \quad \forall i = 0, 1, \dots, \min \{ n, m \}
+\end{align}
+
+Se $n > m$ allora $c_i = 0, i = m + 1, \dots, n$, altrimenti \\
+se $m > n$ allora $d_i = 0, i = n + 1, \dots, m$.

@@ -1,0 +1,116 @@
+\section{La funzione di trasferimento}
+\subsection{Estensione dell'insieme dei behaviors}
+
+Dato un sistema dinamico $\sum$ descritto dall'equazione differenziale:
+\begin{align}
+  \sum_{i=0}^n a_i D^i y = \sum_{i=0}^m b_i D^i u
+\end{align}
+
+Si definisce estensione impulsiva dei behaviors o \textbf{behavior esteso} di $\sum$:
+\begin{align}
+  \mathcal{B}^* := \{ (u, y) \in \mathcal{C}_p^{\infty} (\mathbb{R})^* \times \mathcal{C}_p^{\infty} (\mathbb{R})^* : \sum_{i=0}^n a_i D^{*i} y = \sum_{i=0}^m b_i D^{*i} u \}
+\end{align}
+
+\begin{align}
+  \mathcal{B} \subset \mathcal{B}^*
+\end{align}
+
+Se ne ricava una proprietà importante:
+\begin{align}
+  (u, y) \in \mathcal{B}^* \Rightarrow (D^* u, D^*y) \in \mathcal{B^*}
+\end{align}
+
+
+\subsection{Problema fondamentale dell'analisi nel dominio del tempo di un sistema $\sum$}
+
+Avendo l'equazione differenziale che descrive il sistema $\sum$:
+\begin{align}
+  \sum_{i=0}^n a_i D^{*i} y(t) = \sum_{i=0}^m b_i D^{*i} u(t)
+\end{align}
+
+\textbf{Si deve applicare la trasformata di Laplace}:
+\begin{align}
+  \sum_{i=0}^n a_i \mathcal{L}[  D^{*i} y(t) ] &= \sum_{i=0}^m b_i \mathcal{L}[ D^{*i} u(t) ] \\
+  \sum_{i=0}^n a_i s^i Y(s) &= \sum_{i=0}^m b_i s^i U(s)
+\end{align}
+
+Si definisce funzione di trasferimento del sistema $\sum$:
+\begin{align}
+  G(s) := \frac{Y(s)}{U(s)} = \frac{\sum_{i=0}^m b_i s^i}{\sum_{i=0}^n a_i s^i}
+  \label{eq:funzione_trasferimento}
+\end{align}
+
+
+
+\subsubsection{Sistema proprio} % (fold)
+\label{sec:Sistema proprio}
+Un sistema si dice \textbf{(strettamente)proprio} se la sua funzione di trasfermento è una funzione razionale (strettamente)propria, cioè:
+\begin{itemize}
+  \item $n \geq m \implies \rho \geq 0$ il sistema è proprio
+  \item $n > m \implies \rho \geq 1$ il sistema è strettamente proprio
+\end{itemize}
+% subsubsection Sistema proprio (end)
+
+
+\subsubsection{Guadagno statico} % (fold)
+\label{sec:Guadagno statico}
+
+Rapporto fra valore costante dell'uscita e il valore costante dell'ingresso:
+\begin{align}
+  K := \frac{y_c}{u_c}
+\end{align}
+
+% subsubsection Guadagno statico (end)
+
+\subsubsection{Polinomio caratteristico} % (fold)
+\label{sec:Polinomio caratteristico}
+
+Dato il sistema $\sum$:
+\begin{align}
+  \sum_{i=0}^n a_i D^{i} y = \sum_{i=0}^m b_i D^{i} u
+\end{align}
+
+Il polinomio caratteristico è:
+\begin{align}
+  a(s) := \sum_{i=0}^n a_i s^i
+\end{align}
+
+% subsubsection Polinomio caratteristico (end)
+
+\subsubsection{Poli e Zeri} % (fold)
+\label{sec:Poli e Zeri}
+Avendo una funzione di trasferimento $G(s)$:
+\begin{align}
+  G(s) = \frac{b(s)}{a(s)}
+\end{align}
+
+gli zeri sono i valori di $s$ che annullano il numeratore $b(s)$, i poli sono i valori di $s$ che annullano il denominatore $a(s)$.
+% subsubsection Poli e Zeri (end)
+
+\subsubsection{Modi} % (fold)
+\label{sec:Modi}
+Se $p$ è un polo \textbf{reale} con molteplicità $h$:
+\begin{align}
+  e^{pt}, te^{pt}, \dots, t^{h-1}e^{pt}
+\end{align}
+
+Se $\sigma \pm j \omega$ è un polo \textbf{complesso} coniugato con molteplicità $h$:
+\begin{align}
+  e^{\sigma t} \sin(\omega t + \phi_1), te^{\sigma t} \sin(\omega t + \phi_2), \dots, t^{h-1}e^{\sigma t} \sin(\omega t + \phi_h)
+\end{align}
+
+oppure:
+\begin{align}
+  e^{\sigma t} \sin(\omega t), e^{\sigma t} \cos(\omega t), \dots, t^{h-1}e^{\sigma t} \sin(\omega t), t^{h-1}e^{\sigma t} \cos(\omega t)
+\end{align}
+% subsubsection Modi (end)
+
+
+\subsubsection{Risposte canoniche} % (fold)
+\label{sec:Risposte canoniche}
+Usualmente le risposte canocniche prese in considerazione sono:
+\begin{itemize}
+  \item $g(t) \equiv$ risposta all'impulso $\delta(t)$
+  \item $g_s(t) \equiv$ risposta al gradino $1(t)$
+\end{itemize}
+% subsubsection Risposte canoniche (end)

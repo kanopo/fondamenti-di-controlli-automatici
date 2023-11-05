@@ -1,75 +1,59 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{article}
 
-% ----------------------------------------------------
-% PACKAGE
-% ----------------------------------------------------
+% math packages
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
 
+% graphics packages
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{hyperref}
-\usepackage[a4paper, portrait, margin=0.5in]{geometry}
+
+% code packages
+\usepackage{listings}
+
+% language packages
 \usepackage[italian]{babel}
-\usepackage{enumerate}% http://ctan.org/pkg/enumerate
 
-% \usepackage{tcolorbox} % usato per fare le box colorate
-% \usepackage{soul} % usato per barrare il testo
-% % \usepackage{algorithm} % usato per scrivere algoritmi
-% \usepackage{algpseudocode}
-% \usepackage{algorithm2e}
-% \usepackage{tikz}
-\usepackage{circuitikz}
-% \usepackage{listings}
+% page geometry
+\usepackage[a4paper, portrait, margin=0.85in]{geometry}
 
-% \lstset{
-%   language=Python,
-%   basicstyle=\ttfamily,
-%   keywordstyle=\color{blue},
-%   stringstyle=\color{red},
-%   commentstyle=\color{green},
-%   numbers=left,
-%   numberstyle=\tiny\color{gray},
-%   breaklines=true,
-%   frame=single,
-%   captionpos=b,
-%   showstringspaces=false,
-%   tabsize=2
-% }
-% \hypersetup{
-%     colorlinks=true,
-%     linkcolor=black,
-%     urlcolor=blue,
-% }
+% links
+\usepackage[colorlinks]{hyperref}
 
-\title{Fondamenti di controlli automatici}
-\author{Ollari Dmitri}
+% per le tabelle
+\usepackage{adjustbox}
+
+\newtheorem{definition}{Definizione}[section]
+
+\newtheorem{theorem}{Teorema}[section]
+
+
 
 \begin{document}
-    \maketitle
 
-    \tableofcontents
-    \include{1}
-    \include{2}
-    % \include{3}
-    \include{4}
-    % \include{5}
-    \include{6}
-    \include{7}
-    \include{8}
-    \include{9}
-    \include{10}
-    \include{11}
-    \include{12}
-    \include{13}
-    \include{14}
-    \include{15}
-    \include{16}
-    \include{17}
-    \include{20}
-    \include{21}
-    \include{22}
-    \include{23}
+\title{
+	Fondamenti di controlli automatici
+}
+\author{Ollari Ischimji Dmitri}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\include{./01_controllo_attivo.tex}
+\include{02_modellistica_eq_diff_lineari}
+\include{03_cenni_analisi_complessa}
+\include{04_laplace}
+\include{05_funzioni_impulsive_e_behaviors}
+\include{06_funzione_trasferimento}
+\include{07_sistemi_dinamici_elementari}
+\include{08_stabilita_sistemi_dinamici}
+\include{09_analisi_armonica_e_bode}
+\include{10_diagrammi_nyquist_e_fase_minima}
+\include{11_sistemi_retroazionati}
+\include{12_sistemi_retrazionati_criterio_nyquist}
 
 \end{document}
-
