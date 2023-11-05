@@ -3,33 +3,42 @@ name: LaTeX Build and Release
 on:
   push:
     branches:
-      - '**'  # This will trigger the workflow for any push to any branch
+      - '**'
     paths:
-      - 'main.tex'  # Only run if there's a change to the main.tex file
-  workflow_dispatch:  # This enables manual triggering of the workflow.
+      - 'main.tex'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Install LaTeX
-      run: sudo apt-get install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-lang-italian
+      - name: Install LaTeX
+        run: sudo apt-get install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-lang-italian
 
-    - name: Compile LaTeX document
-      run: pdflatex main.tex
+      - name: Compile LaTeX document
+        run: pdflatex main.tex
 
-    - name: Upload PDF to Release
-      id: create_release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, grabs the upload_url.
-        asset_path: ./main.pdf
-        asset_name: main.pdf
-        asset_content_type: application/pdf
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: 'release-${{ github.run_number }}'
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
 
+      - name: Upload PDF to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./main.pdf
+          asset_name: main.pdf
+          asset_content_type: application/pdf
