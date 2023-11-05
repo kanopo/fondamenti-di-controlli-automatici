@@ -1,0 +1,34 @@
+name: LaTeX Build and Release
+
+on:
+  push:
+    branches:
+      - '**'  # This will trigger the workflow for any push to any branch
+    paths:
+      - 'main.tex'  # Only run if there's a change to the main.tex file
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install LaTeX
+      run: sudo apt-get install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+
+    - name: Compile LaTeX document
+      run: pdflatex main.tex
+
+    - name: Upload PDF to Release
+      id: create_release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, grabs the upload_url.
+        asset_path: ./main.pdf
+        asset_name: main.pdf
+        asset_content_type: application/pdf
+
