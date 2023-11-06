@@ -136,3 +136,24 @@ $\omega_c$ è:
 
 
 
+Il margine di ampiezza spesso si fornisce in decibel:
+\begin{equation}
+  M_{A(dB)} = 20\log_{10} M_A
+\end{equation}
+
+\subsection{Definizione generalizzata dei margini di stabilità}
+Il sistema retroazionato è asintoticamente stabile se e solo se:
+\begin{equation}
+  M_A := \sup \Big\{ M > 1: \Big|1 + \gamma G(j\omega)H(j\omega)\Big| > 0 \quad \forall \gamma \in \Big[ \frac{1}{M}, M \Big] \text{ e } \forall \omega \geq 0 \Big\}
+\end{equation}
+
+\begin{equation}
+  M_F := \sup \Big\{ \phi > 0: \Big|1 + e^{-j \varphi G(j\omega)H(j\omega)} \Big| > 0 \quad \forall \varphi \in \Big[ - \phi, +\phi \Big] \text{ e } \forall \omega \geq 0 \Big\}
+\end{equation}
+
+
+
+I margini di stabilità sono \textit{norme} che misurano la distanza dal punto 
+critico $-1 + j0$ dal diagramma polare di $G(s)H(s)$.
+
+
