@@ -1,0 +1,83 @@
+\section{Proprietà della trasformata zeta}
+
+
+\subsection{Trasformata zeta di un segnale eriatrdato di $n$ passi}
+
+\begin{align}
+  \mathcal{Z}[x(k - n)] &= z^{-n} \mathcal{Z}[x(k)] + \sum_{k=0}^{n-1} x(k-n) z^{-k} \\
+  &= z^{-n} \mathcal{Z}[x(k)] + x(-n) + x(-n+1) z{-1} + \dots + x(-1) z^{-n+1}
+\end{align}
+
+\subsection{Trasformata zeta di un segnale avanzato di $n$ passi}
+
+\begin{align}
+  \mathcal{Z}[z(k + n)] &= z^{n} \mathcal{Z}[x(k)] - \sum_{i=0}^{n-1} x(i) z^{n-i} \\
+  &= z^n \mathcal{Z}[x(k)] - x(0) z^n - x(1) z^{n-1} - \dots - x(n-1) z
+\end{align}
+
+\subsection{Teorema del valore iniziale}
+\begin{equation}
+  x(0) = \lim_{z \to \infty} \mathcal{Z}[x(k)]
+\end{equation}
+
+
+\subsection{Teorema del valore finale}
+Dato il segnale $x(k)$, se $\lim_{k \to \infty} x(k)$ esiste, allora, vale:
+\begin{equation}
+  \lim_{k \to \infty} x(k) = \lim_{z \to 1} (z - 1) \mathcal{Z} [x(k)]
+\end{equation}
+
+\subsection{Trasformata zeta di $a^k x(k)$}
+
+\begin{equation}
+  \mathcal{Z} [a^k x(k)] = X \left( \frac{z}{a} \right)
+\end{equation}
+
+\subsection{Convoluzione(a tempo discreto)}
+\begin{equation}
+  (x * y)(k) \equiv x(k) * y(k) = \sum_{i=-\infty}^{+\infty} x(k-i) y(i)
+\end{equation}
+
+\subsection{Transformata zeta della convoluzione}
+\begin{equation}
+  \mathcal{Z} [x * y] = X(z) Y(z)
+\end{equation}
+
+\subsection{Derivata della trasformata zeta}
+\begin{equation}
+  -z \frac{dX(z)}{dz} = \mathcal{Z} [k x(k)]
+\end{equation}
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{@{} cc @{}}
+% \toprule
+% \textbf{Sequenza nel tempo discreto} & \textbf{Trasformata Z} \\
+% \midrule
+% Impulso unitario, $\delta[n]$ & 1 \\
+% Gradino unitario, $u[n]$ & $\frac{1}{1-z^{-1}}$ per $|z|>1$ \\
+% Sequenza esponenziale, $a^n u[n]$ & $\frac{1}{1-az^{-1}}$ per $|z|>|a|$ \\
+% Sequenza rampa, $n u[n]$ & $\frac{z^{-1}}{(1-z^{-1})^2}$ per $|z|>1$ \\
+% Sequenza esponenziale decrescente, $a^n u[n]$ & $\frac{1}{1-az^{-1}}$ per $|z|>|a|$ \\
+% Sinusoide, $A\sin(\omega_0 n + \phi) u[n]$ & $\frac{z^{-1} \sin(\omega_0 + \phi)}{1 - 2\cos(\omega_0)z^{-1} + z^{-2}}$ per $|z|>1$ \\
+% Cosinusoide, $A\cos(\omega_0 n + \phi) u[n]$ & $\frac{z^{-1} (\cos(\phi) - \cos(\omega_0 + \phi))}{1 - 2\cos(\omega_0)z^{-1} + z^{-2}}$ per $|z|>1$ \\
+% \bottomrule
+% \end{tabular}
+% \caption{Trasformate Z comuni per l'analisi dei sistemi digitali.}
+% \label{tab:trasformate_z}
+% \end{table}
+
+
+
+Il prof evidenzia le seguenti trasformate Z:
+\begin{equation}
+  \mathcal{Z}[1(k)] = \frac{z}{z-1}
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}[k1(k)] = \frac{z}{(z-1)^2}
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}[k^21(k)] = \frac{z(z+1)}{(z-1)^3}
+\end{equation}
