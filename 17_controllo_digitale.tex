@@ -1,0 +1,65 @@
+\section{Introduzione al controllo digitale}
+
+\subsection{Convertitore A/D}
+
+Campionamento del segnale con periodo $T$:
+\begin{equation}
+  x(t) \rightarrow \tilde{x(k)} = x(kT), \quad k \in \mathbb{Z}
+\end{equation}
+
+\subsection{Teorema del campionamento}
+
+Un segnale $f(t)$ con spettro limitato da $0$ a $\omega_s$, si può ricostruire
+dalla sequenza di campioni $\tilde{f}(k) = f(kT)$ se si campiona con frequenza
+non inferiore a $2\omega_s$.
+
+\subsection{Convertitore D/A}
+
+Serve a convertire un segnale digitale in un segnale analogico, il più
+cumune è il dispositivo di tenuta di ordine zero (ZOH).
+
+
+\subsection{La trasformata zeta}
+
+\begin{definition}[Trasformata zeta]
+  Sia $x: \mathbb{Z} \rightarrow \mathbb{R}$ un segnale a tempo discreto.
+  La trasformata zeta di $x(k)$ è :
+  \begin{equation}
+    \mathcal{Z}[x] \equiv \mathcal{Z}[x(k)] := \sum_{k=0}^{+\infty} x(k) z^{-k}
+  \end{equation}
+  Con $z$ variabile complessa.
+\end{definition}
+
+
+
+\begin{definition}[Linearità della trasformata zeta]
+Dati due segnali $x(k)$ e $y(k)$ e due costanti $a$ e $b$:
+\begin{equation}
+  \mathcal{Z}[ax(k) + by(k)] = a \mathcal{Z}[x(k)] + b \mathcal{Z}[y(k)]
+\end{equation}
+\end{definition}
+
+
+\begin{definition}[regione di convergenza o ROC]
+  Data la sequenza $x(k)$, la regione di convergenza è definita come:
+  \begin{equation}
+  \text{ROC} := \{ z \in \mathbb{C} : | \sum_{k=0}^{\infty} x(k)z^{-k} | < \infty \}
+  \end{equation}
+\end{definition}
+
+
+Le proprietà:
+\begin{itemize}
+  \item $X(z)$ è analitica su $\text{ROC}$
+  \item Se $\text{ROC} \neq \emptyset$:
+    \begin{equation}
+      \text{ROC} = \{ z \in \mathbb{C} : |z| > \rho_c \}
+    \end{equation}
+    Dove $\rho_c$ è il raggio di convergenza.
+
+  \item se $\rho > \rho_c$ la serie $\sum_{k=0}^{\infty} x(k)z^{-k}$ è convergente
+  uniformemente su $\{ z \in \mathbb{C} : | z | \geq \rho \}$
+\end{itemize}
+
+
+
