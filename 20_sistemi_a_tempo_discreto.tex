@@ -1,0 +1,37 @@
+\section{Sistemi a tempo discreto}
+
+\begin{definition}[Sistema a tempo discreto]
+  Un sistema a tempo discreto è un processo per il quale assegnato un segnale
+  di ingresso a tempo discreto corrisponde un segnaledi uscita a tempo discreto.
+\end{definition}
+
+\begin{definition}[Linearità]
+  Un sistema si dice linere quando soddisfa la proprietà di sovrapposizione
+  degli effetti.  
+\end{definition}
+
+
+\begin{definition}[Stazionarietà]
+  Un sistema di dice stazionrio (invariante nel tempo) se per ogni ingresso
+  con una certa caratteristica, l'uscita ha la stessa caratteristica.
+
+  \begin{equation}
+    (u(k), y(k)) \in \mathcal{B}_d \implies (u(k + k_0), y(k + k_0)) \in \mathcal{B}_d
+  \end{equation}
+\end{definition}
+
+
+\subsection{Risposta di un sistema lineare a tempo discreto e la funzione di trasferimento}
+
+
+Definita l'equazione alle differenze come:
+\begin{equation}
+  a_n y(k) + a_{n-1} y(k-1) + \dots + a_0 y(k-n) = b_m u(k - n + m)  + \dots + b_0 u(k-n)
+\end{equation}
+
+\begin{itemize}
+  \item $a_n \neq 0$
+  \item $b_m \neq 0$
+  \item $\{ a_0 \neq 0 \} \vee \{ b_0 \neq 0\}$
+  \item $m \leq n$
+\end{itemize}
