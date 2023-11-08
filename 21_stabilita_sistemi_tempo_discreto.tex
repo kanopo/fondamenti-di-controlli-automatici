@@ -1,0 +1,149 @@
+\section{Stabilità dei ssitemi a tempo discreto}
+
+\subsection{Stati di equilibrio e stabilità}
+Un sistema a tempo discreto $\sum_d$:
+\begin{equation}
+  a_n y(k) + a_{n-1} y(k-1) + \dots + a_0 y(k-n) = b_m u(k-n+m) + \dots + b_0 u(k-n)
+\end{equation}
+
+\begin{equation}
+  H(z) = \frac{b(z)}{a(z)} = \frac{b_m z^m + b_{m-1} z^{m-1} + \dots + b_0}{a_n z^n + a_{n-1} z^{n-1} + \dots + a_0}
+\end{equation}
+
+\begin{definition}[Stabilità di $\sum_d$]
+  Il sistema si dice:
+  \begin{enumerate}
+    \item \textbf{Stabile}: se per ogni perturbazione $y_{lib}(k)$ è limitata per ogni $k \geq 0$.
+    \item \textbf{Asintoticamente stabile}: se per ogni perturbazione $y_{lib}(k)$ è limitata e tende a zero per $k \rightarrow \infty$.
+    \item \textbf{Semplicemente stabile}: se è stabile ma esiste almeno una perturbazine $y_{lib}(k)$ che non tende a zero per $k \rightarrow \infty$.
+    \item \textbf{Instabile}: se non è stabile.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{definition}[Teorema sulal stabilità alle perturbazioni]
+  Sia $\sum_d$ caratterizzato dalla funzione di trasferimento $H(z) = \frac{b(z)}{a(z)}$:
+  \begin{enumerate}
+    \item $\sum_d$ è \textbf{stabile} se e solo se tutti i poli appatengono al
+    cerchio unitario e quelli sulla frontiere del cerchio unitario hanno
+    molteplicità uguale a 1
+
+    \item $\sum_d$ è \textbf{asintoticamente stabile} se e solo se tutti i poli
+    appartengono al cerchio unitario
+
+    \item $\sum_d$ è \textbf{semplicemente stabile} se e solo se tutti i poli
+    appartengono al cerchio unitario ma uno o più sulla circonferenza ha
+    molteplicità uguale a 1
+
+    \item $\sum_d$ è \textbf{instabile} se e solo se almeno un polo è esterno
+    al cerchio oppure un polo sul cerchio ha molteplicità maggiore di 1
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Stabilità BIBO]
+  il sistema è BIBO stabile se per ogni azione forzante limitata, l'uscita è
+  limitata.
+\end{definition}
+
+
+\subsection{Metodi per lo studio della stabilità asintotica}
+
+\subsubsection{Critero di Jury}
+
+Sia dato il polinomio $a(z) = a_n z^n + a_{n-1} z^{n-1} + \dots + a_0$ con $a_n > 0$.
+
+
+Affinchè $a(z)$ abbia tutte le radici con modulo minore di 1 è necessario che
+siano soddisfatte le disuguaglianze:
+\begin{enumerate}
+  \item $a(1) > 0$
+  \item $(-1)^n a(-1) > 0$
+  \item $|a_0| < a_n$
+\end{enumerate}
+
+Nei casi in cui $n=1$ e $n=2$ le condizioni si riducono solo alla
+disuguaglianza 1 e 3.
+
+
+\subsection{Cenni sui metodi di sintesi dei controllori discreti}
+
+Gli approcci sono 2:
+\begin{itemize}
+  \item \textbf{Diretto}: Sintesi del controllore a tempo discreto partendo dall'impianto controllato
+  \item \textbf{Indiretto}: Sintesi del controllore a tempo discreto partendo dal controllore a tempo continuo
+\end{itemize}
+
+
+\subsubsection{Scelta del periodo di campionamento}
+
+Sia $\omega_b$ la banda passante desiderata per il sistema controllato, il
+campionamento deve essere eseguito a $\omega_s > 2 \omega_b$.
+
+Dove $\omega_s$ è la pulsazione di campionamento:
+\begin{equation}
+  \omega_s = \frac{2 \pi}{T}
+\end{equation}
+
+Dove $T$ è il periodo di campionamento.
+
+\subsubsection{Metodi indiretti}
+\begin{definition}[Metodo di Eulero in avanti]
+  Si parte da condizioni iniali nulle:
+  \begin{equation}
+    Dx(t) \implies \mathcal{L}[Dx(t)] = s \mathcal{L} [x(t)]
+  \end{equation}
+
+  \begin{equation}
+    Dx(kT) \cong \frac{x((k+1)T) - x(kT)}{T} \implies \mathcal{Z}[Dx(kT)] \cong \frac{z-1}{T} \mathcal{Z}[x(kT)]
+  \end{equation}
+
+  Dal confronto si imponse che:
+  \begin{equation}
+    s = \frac{z-1}{T}
+  \end{equation}
+
+  Quindi il controllore a tempo discreto sarà:
+  \begin{equation}
+    C_d(z) = \frac{z-1}{T} C
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Metodo di Eulero all'indietro]
+  Si parte da condizioni iniali nulle:
+  \begin{equation}
+    Dx(t) \implies \mathcal{L}[Dx(t)] = s \mathcal{L} [x(t)]
+  \end{equation}
+
+  \begin{equation}
+    Dx(kT) \cong \frac{x(kT) - x((k-1)T)}{T}
+  \end{equation}
+
+  Dal confronto si imponse che:
+  \begin{equation}
+    s = \frac{z-1}{Tz}
+  \end{equation}
+
+  Quindi il controllore a tempo discreto sarà:
+  \begin{equation}
+    C_d(z) = \frac{z-1}{Tz} C
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Metodo di Tustin]
+  Si parte sempre da condizioni iniziali nulle e il risultato è:
+  \begin{equation}
+    s = \frac{2}{T} \frac{z-1}{z+1}
+  \end{equation}
+  Con il controllore a tempo discreto:
+  \begin{equation}
+    C_d(z) = \frac{2}{T} \frac{z-1}{z+1} C
+  \end{equation}
+\end{definition}
+
+\subsubsection{Considerazioni sulla stabilità}
+
+\begin{itemize}
+  \item \textbf{Eulero in avanti}: Se $C(s)$ è asintoticamente stabile allora $C_d(z)$ può essere instabile
+  \item \textbf{Eulero all'indietro}: Se $C(s)$ è asintoticamente stabile allora $C_d(z)$ è asintoticamente stabile
+  \item \textbf{Tustin}: Se $C(s)$ è asintoticamente stabile allora $C_d(z)$ è asintoticamente stabile
+\end{itemize}
