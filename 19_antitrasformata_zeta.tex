@@ -1,0 +1,139 @@
+\section{Antitrasformata zeta}
+
+\subsection{Teorema dei residui}
+
+Sia $\Gamma$ una curva chiusa semplice e $f(z)$ una funzzione analitica su
+$\Gamma$ tranne che in un numero finito di punti $p_1, p_2, \dots, p_n$ allora:
+\begin{equation}
+  \oint_{\Gamma} f(z) dz = 2 \pi j \sum_{1=1}^{n} Res(f, p_1)
+\end{equation}
+
+Sia $l \in \mathbb{Z}$ allora:
+\begin{equation}
+  \oint_{\Gamma} z^l dz = \begin{cases}
+    2 \pi j & l = -1 \\
+    0 & l \neq -1
+    \end{cases}
+\end{equation}
+
+\begin{definition}[Antitrasformata zeta]
+  Sia $X(z)$ la trasformata zeta di una sequenza $x(k)$ allora:
+  \begin{equation}
+    x(k) = \frac{1}{2\pi j} \oint_{\gamma} X(z) z^{k-1} dz
+  \end{equation}
+  dove $\gamma$ è una curva chiusa semplice, percorsa in senso antiorario, che
+  circonda la regione di non convergenza di $\mathcal{Z}[x(k)]$.
+
+  Formalmente:
+  \begin{equation}
+    x(k) = \mathcal{Z}^{-1}[X(z)] = \frac{1}{2\pi j} \oint_{\gamma} X(z) z^{k-1} dz
+  \end{equation}
+\end{definition}
+
+
+\subsection{Antitrasformata zeta con il metodo dei residui}
+
+\begin{equation}
+  x(k) = \frac{1}{2 \pi j} \cdot 2 \pi j \sum_{i} \text{Res}\{ X(z) \cdot z^{k-1}, p_i \}
+\end{equation}
+
+Si semplifica il tutto con la formula:
+\begin{equation}
+  x(k) = \sum_{i} \text{Res}\{ X(z) \cdot z^{k-1}, p_i \}
+\end{equation}
+
+
+Sfruttando una proprietà dei residui:
+\begin{equation}
+  \sum_{i=1}^{k} \text{Res}\{ F, p_i \} = \begin{cases}
+    0 & \text{se } n-m > 1 \\
+    \frac{b_m}{a_n} & \text{se } n-m = 1
+  \end{cases}
+\end{equation}
+
+
+\subsubsection{Formule}
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{1}{(z - a)^n} \right] = \frac{(k-1)(k-2) \dots (k - n + 1)}{ (n-1)! } a^{k-n} 1(k - 1)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{z}{(z - a)^n} \right] = \frac{k(k-1)(k-2) \dots (k - n + 2)}{ (n-1)! } a^{k+1-n} 1(k)
+\end{equation}
+
+
+
+
+
+
+
+\subsubsection{Alcune trasformate calcolate con i residui}
+\begin{equation}
+  \mathcal{Z}^{-1} [ \frac{1}{z-a} ] = a^{k-1} 1(k-1)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{1}{(z-a)^n} \right] = \frac{1}{(n-1)!} D^{n-1} \left[ z^{k-1} \right]_{z=a}
+\end{equation}
+
+Alcuni casi particolari sono:
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{1}{z-a} \right] = a^{k-1} 1(k-1)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{1}{(z-a)^2} \right] = (k-1) a^{k-2} 1(k-1)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{1}{(z-a)^3} \right] = \frac{(k-1)(k-2)}{2} a^{k-3} 1(k-1)
+\end{equation}
+
+
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{z}{z-a} \right] = a^{k} 1(k)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{z}{(z-a)^2} \right] = (k) a^{k-1} 1(k)
+\end{equation}
+
+\begin{equation}
+  \mathcal{Z}^{-1} \left[ \frac{z}{(z-a)^3} \right] = \frac{(k)(k-1)}{2} a^{k-2} 1(k)
+\end{equation}
+
+
+
+\subsection{Antitrasformata zeta con il metodo dello sviluppo in fratti semplici}
+
+\begin{equation}
+  F(z) = \frac{
+    b(z)
+  }{
+    (z - p_1)^{r_1} (z - p_2)^{r_2} \dots (z - p_h)^{r_h}
+  }
+\end{equation}
+
+$p_i \neq p_j$ se $i \neq j$.
+
+
+\begin{equation}
+  \sum_{i=1}^{h} r_i = n, \quad \deg(b(z)) < n)
+\end{equation}
+
+\begin{equation}
+  F(z) = c_0 + \frac{c_{1,1}}{(z-p1)^{r_1}} + \dots + \frac{c_{1,r_1}}{(z-p_1)} + \dots + \frac{c_{h,1}}{(z-p_h)^{r_h}} + \dots + \frac{c_{h,r_h}}{(z-p_h)}
+\end{equation}
+
+\begin{equation}
+  c_0 = \lim_{z \to \infty} F(z)
+\end{equation}
+
+
+\begin{equation}
+  c_{i, j} = \frac{1}{
+    (j-i)!
+  } D^{j-1} \left[ (z-p_i)^{r_i} F(z) \right] |_{z=p_i} \quad i = 1, \dots, h \quad j = 1, \dots, r_i
+\end{equation}
+
